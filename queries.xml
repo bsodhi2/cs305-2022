@@ -1,0 +1,8 @@
+<queries>
+    <sql id="test1" paramType="org.foo.Bar">
+        SELECT * FROM FOO;
+    </sql>
+    <sql id="test2" paramType="org.foo.Baz">
+        SELECT * FROM FOO, Bar WHERE X=${id}, Y=${foo.Bar};
+    </sql>
+</queries>

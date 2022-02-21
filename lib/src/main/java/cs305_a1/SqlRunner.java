@@ -26,6 +26,9 @@ import java.util.List;
  * For “paramType”, the value can also be a primitive type such as int, float, string, or a collection/array of such primitives. In such a case the placeholder in the SQL query for the primitive type can be named ${value}, and the value supplied will be directly substituted when running the query.
  */
 public interface SqlRunner {
+    public enum QueryType {
+        SELECT, UPDATE, INSERT, DELETE
+    }
     /**
      * Executes a select query that returns a single or no record.
      * @param queryId Unique ID of the query in the queries.xml file.
@@ -52,7 +55,7 @@ public interface SqlRunner {
      * @param queryParam
      * @return
      */
-    int update(String queryId, Object queryParam);
+    int update(String queryId, Object queryParam) throws DbAccessException;
 
     /**
      * Execute an insert statement and return the number of rows affected.
@@ -60,7 +63,7 @@ public interface SqlRunner {
      * @param queryParam
      * @return
      */
-    int insert(String queryId, Object queryParam) throws DbAccessException;
+    Object insert(String queryId, Object queryParam) throws DbAccessException;
 
     /**
      * Execute a delete statement and return the number of rows affected.

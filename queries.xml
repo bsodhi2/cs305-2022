@@ -1,8 +1,49 @@
 <queries>
-    <sql id="test1" paramType="org.foo.Bar">
-        SELECT * FROM FOO;
+    <sql id="selectAddress" paramType="int">
+        SELECT `address`.`address_id` as id,
+        `address`.`address`,
+        `address`.`address2`,
+        `address`.`district`,
+        `address`.`city_id` as cityId,
+        `address`.`postal_code` as postalCode,
+        `address`.`phone`,
+        `address`.`location`,
+        `address`.`last_update` as lastUpdated
+        FROM `sakila`.`address`
+        where address_id=${this}
     </sql>
-    <sql id="test2" paramType="org.foo.Baz">
-        SELECT * FROM FOO, Bar WHERE X=${id}, Y=${foo.Bar};
+    <sql id="test2" paramType="int">
+        SELECT a.address_id as id,
+        a.address, a.address2, a.district, a.city_id as cityId,
+        a.postal_code as postalCode, a.phone, a.location,
+        a.last_update as lastUpdated, c.city as "city.city",
+        a.city_id as "city.id", ct.country as "city.country.country",
+        ct.country_id as "city.country.id"
+
+        FROM `sakila`.`address` a
+        JOIN sakila.city c on c.city_id = a.city_id
+        join sakila.country ct on ct.country_id = c.country_id
+        where a.address_id=${this}
+    </sql>
+    <sql id="getAddrList" paramType="String">
+        SELECT a.address_id as id,
+        a.address, a.address2, a.district, a.city_id as cityId,
+        a.postal_code as postalCode, a.phone, a.location,
+        a.last_update as lastUpdated, c.city as "city.city",
+        a.city_id as "city.id", ct.country as "city.country.country",
+        ct.country_id as "city.country.id"
+
+        FROM `sakila`.`address` a
+        JOIN sakila.city c on c.city_id = a.city_id
+        join sakila.country ct on ct.country_id = c.country_id
+        where ct.country=${this}
+    </sql>
+    <sql id="updateAddr" paramType="cs305_a1.dto.Address">
+        update sakila.address
+        set address2=${address2} where address_id=${id};
+    </sql>
+    <sql id="addCountry" paramType="cs305_a1.dto.Country">
+        INSERT INTO sakila.country(country, last_update)
+        VALUES(${country}, ${lastUpdated});
     </sql>
 </queries>

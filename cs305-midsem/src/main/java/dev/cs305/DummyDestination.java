@@ -38,6 +38,10 @@ public class DummyDestination {
      * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
+        if (args.length != 1) {
+            System.out.println("!!! Required CLI missing: Path to config.json file.");
+            return;
+        }
         System.out.println("Starting dummy services.");
         Gson gs = new Gson();
         cfg = gs.fromJson(new FileReader(args[0]), Config.class);

@@ -1,2 +1,2 @@
-rootProject.name = "MyJavalin"
+rootProject.name = "Router"
 

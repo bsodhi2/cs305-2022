@@ -1,5 +1,6 @@
 plugins {
-    java
+    application
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "org.example"
@@ -7,6 +8,10 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass.set("dev.cs305.MessageRouter")
 }
 
 dependencies {

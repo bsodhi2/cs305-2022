@@ -1,0 +1,11 @@
+{
+  "routerUrl": "http://localhost:9900/input",
+  "services" : [
+    { "host": "127.0.0.1", "port": "8201", "paths": "foo1,foo2" },
+    { "host": "127.0.0.1", "port": "8202", "paths": "bar1,bar2" }
+  ],
+  "requests" : [
+    {"sender":  "http://127.0.0.1:8201/foo1", "messageType":  "COMPRESS" },
+    {"sender":  "http://127.0.0.1:8201/foo2", "messageType":  "GET_STOCK_QUOTE" }
+  ]
+}

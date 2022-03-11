@@ -31,7 +31,7 @@ CREATE TABLE RoutingTable (
   ;
   ```
   3. Start the message router service by running `./gradlew run < PUT PORT No. HERE> 'jdbc:sqlite:PATH/TO/mydatabase.db'` 
-  4. Start the dummy senders/receivers: `java -cp <PATH TO>/MyJavalin-1.0-SNAPSHOT-all.jar dev.cs305.DummyDestination ~/temp/cs305-2022/cs305-midsem/config.json`
+  4. Start the dummy senders/receivers: `java -cp <PATH TO>/Router-1.0-all.jar dev.cs305.DummyDestination ~/temp/cs305-2022/cs305-midsem/config.json`
 
 Following is an example run:
 ```
